@@ -5,8 +5,10 @@
     <recommend-view :recommends="recommends"/>
     <feature-view/>
     <tab-control class="tab-control"
-                 :titles="['流行', '新款', '精选']"/>
-    <goods-list :goods="goods['pop'].list"/>
+                 :titles="['流行', '新款', '精选']" 
+                 @tabClick="tabClick"/>
+    <!-- 下面这里改成了计算属性 -->
+    <goods-list :goods="showGoods"/>
 
     <ul>
       <li>列表1</li>
@@ -148,7 +150,13 @@
           'pop': {page: 0, list: []},
           'new': {page: 0, list: []},
           'sell': {page: 0, list: []},
-        }
+        },
+        currentType: 'pop'
+      }
+    },
+    computed: {
+      showGoods() {
+        return this.goods[this.currentType].list
       }
     },
     // computed: {
@@ -169,6 +177,25 @@
       this.getHomeGoods('sell')
     },
     methods: {
+      /**
+       * 事件监听的相关方法
+       */
+      tabClick(index) {
+        switch(index) {
+          case 0: 
+            this.currentType = 'pop'
+            break
+          case 1: 
+            this.currentType = 'new'
+            break
+          case 2:
+            this.currentType = 'sell'
+            break
+        }
+      },
+      /**
+       * 网络请求的相关方法
+       */
       getHomeMultidata() {
         getHomeMultidata().then(res => {
           // console.log(res);
@@ -203,12 +230,14 @@
     left: 0;
     right: 0;
     top: 0;
-    z-index: 9px;
+    /* 设置显示优先级 */
+    z-index: 9;
   }
   
   .tab-control {
     position: sticky;
     top: 44px;
+    z-index: 9;
   }
 
 </style>
