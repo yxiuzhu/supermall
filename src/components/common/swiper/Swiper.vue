@@ -19,7 +19,7 @@
     props: {
       interval: {
 		    type: Number,
-        default: 5000
+        default: 3000
       },
       animDuration: {
 		    type: Number,
@@ -50,7 +50,7 @@
 
         // 2.开启定时器
         this.startTimer();
-      }, 100)
+      }, 300)
     },
     methods: {
 		  /**
