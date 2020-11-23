@@ -25,7 +25,7 @@ const routes = [
     component: Category
   },
   {
-    path: 'cart',
+    path: '/cart',
     component: Cart
   },
   {

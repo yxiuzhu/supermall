@@ -3,7 +3,7 @@
     <nav-bar class="home-nav"><div slot="center">购物街</div></nav-bar>
     <tab-control :titles="['流行', '新款', '精选']"
                  @tabClick="tabClick"
-                 ref="tabControl1"
+                 ref="topTabControl"
                  class="tab-control" v-show="isTabFixed"/>
     <scroll class="content" 
             ref="scroll" 
@@ -16,7 +16,7 @@
       <feature-view/>
       <tab-control :titles="['流行', '新款', '精选']" 
                    @tabClick="tabClick"
-                   ref="tabControl2"/>
+                   ref="tabControl"/>
       <!-- 下面这里改成了计算属性 -->
       <goods-list :goods="showGoods"/>
     </scroll>
@@ -38,7 +38,8 @@
 
 
   import { getHomeMultidata, getHomeGoods } from "network/home";
-  import {debounce} from "common/utils"
+  // import {debounce} from "common/utils"
+  import {itemListenerMixin} from 'common/mixin'
 
   export default {
     name: "Home",
@@ -53,6 +54,7 @@
       BackTop,
 
     },
+    mixins:[itemListenerMixin],
     data() {
         FeatureView
       return {
@@ -67,7 +69,9 @@
         isShowBackTop: false,
         tabOffsetTop: 0,
         isTabFixed: false,
-        saveY: 0
+        saveY: 0,
+        // 放到mixin混入中了
+        // itemImgListener: null
       }
     },
     computed: {
@@ -92,7 +96,11 @@
     },
     deactivated() {
       console.log('deactived');
+      // 1.保存Y值
       this.saveY = this.$refs.scroll.getScrollY()
+      // 2.取消全局事件的监听  告诉系统需要取消哪一个函数
+      this.$bus.$off('itemImageLoad', this.itemImgListener)
+      
     },
     created() {
       // 1.请求多个数据
@@ -104,13 +112,15 @@
 
     },
     mounted() {
+      // 最后直接使用mixin(混入)来解决
       // 1.图片加载完成的事件监听
       // 防抖操作
-      const refresh = debounce(this.$refs.scroll.refresh, 50)
+      // const refresh = debounce(this.$refs.scroll.refresh, 50)
       // 3.监听item中图片加载完成
-      this.$bus.$on('itemImageLoad', () => {
-        refresh()
-      })
+      // this.itemImgListener = () => {
+      //   refresh()
+      // }
+      // this.$bus.$on('itemImageLoad', this.itemImgListener)
       // this.$bus.$on('itemImageLoad', () => {
       //   console.log('-------');
       //   this.scroll && this.$refs.scroll.refresh()
@@ -136,8 +146,8 @@
             this.currentType = 'sell'
             break
         }
-        this.$refs.tabControl1.currentType = index;
-        this.$refs.tabControl2.currentType = index;
+        this.$refs.topTabControl.currentType = index;
+        this.$refs.tabControl.currentType = index;
       },
       backClick() {
         // scrollTo的三个参数分别是位置和返回这个位置的时间ms
@@ -157,7 +167,7 @@
       },
       swiperImageLoad () {
         // console.log(this.$refs.tabControl2.$el.offsetTop);
-        this.tabOffsetTop = this.$refs.tabControl2.$el.offsetTop;
+        this.tabOffsetTop = this.$refs.tabControl.$el.offsetTop;
       },
       /**
        * 网络请求的相关方法

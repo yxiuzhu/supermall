@@ -1,6 +1,6 @@
 <template>
   <div class="goods-item" @click="itemClick">
-    <img :src="goodsItem.show.img" alt="" @load="imageLoad">
+    <img :src="showImage" alt="" @load="imageLoad">
     <div class="goods-info">
       <p>{{goodsItem.title}}</p>
       <span class="price">{{goodsItem.price}}</span>
@@ -20,12 +20,25 @@
         }
       }
     },
+    computed: {
+      showImage() {
+        return this.goodsItem.image || this.goodsItem.show.img
+      }
+    },
     methods: {
       imageLoad() {
         // console.log("itemList加载完成");
         this.$bus.$emit("itemImageLoad")
+
+        // 可以使用路由来区分是哪个组件需要发送消息
+        // if(this.$route.path.indexof('/home')) {
+        //   this.$bus.$emit('homeItemImgLoad')
+        // }else if(this.$route.path.indexof('/detail')) {
+        //   this.$bus.$emit('detailItemImgLoad')
+        // }
       },
       itemClick() {
+        // 路由的跳转  push才能返回，replace不能返回
         this.$router.push('/detail/' + this.goodsItem.iid)
       }
     }
