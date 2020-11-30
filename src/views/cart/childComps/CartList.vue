@@ -23,7 +23,7 @@
       ...mapGetters(['cartList'])
     },
     activated(){
-      console.log("0000");
+      // console.log("0000");
       this.$refs.scroll.refresh()
     }
   }
