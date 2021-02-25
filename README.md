@@ -1,4 +1,4 @@
-# mysupermall
+# 仿蘑菇街
 
 ## Project setup
 ```
