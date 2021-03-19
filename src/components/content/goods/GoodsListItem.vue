@@ -30,6 +30,7 @@
     methods: {
       imageLoad() {
         // console.log("itemList加载完成");
+        // 利用事件总线发送事件，让Good检测到
         this.$bus.$emit("itemImageLoad")
 
         // 可以使用路由来区分是哪个组件需要发送消息

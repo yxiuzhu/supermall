@@ -32,10 +32,9 @@
 
         setTimeout(() => {
           this.isShow = false;
-          this.message = '';
+          this.message = '成功添加购物车';
         }, duration)
       }
-
     }
   }
 </script>
