@@ -1,9 +1,9 @@
 <template>
   <div id="detail">
     <detail-nav-bar class="detail-nav" @titleClick="titleClick" ref="nav"/>
-    <scroll class="content" 
-            ref="scroll" 
-            :probe-type="3" 
+    <scroll class="content"
+            ref="scroll"
+            :probe-type="3"
             @scroll="contentScroll">
       <detail-swiper :top-images="topImages"/>
       <detail-base-info :goods="goods"/>
@@ -34,13 +34,13 @@
   import GoodsList from '@/components/content/goods/GoodsList'
   // import Toast from '@/components/common/toast/Toast'
 
-  import { getDetail, 
-           Goods, 
-           Shop, 
-           GoodsParam, 
-           getRecommend} from 'network/detail'
-  import {debounce} from 'common/utils'
-  import {itemListenerMixin, backTopMixin} from 'common/mixin'
+  import { getDetail,
+           Goods,
+           Shop,
+           GoodsParam,
+           getRecommend } from 'network/detail'
+  import { debounce } from 'common/utils'
+  import { itemListenerMixin, backTopMixin } from 'common/mixin'
   import { mapActions } from 'vuex'
 
   export default {
@@ -120,10 +120,6 @@
         this.themeTopYs.push(Number.MAX_VALUE)
         // console.log(this.themeTopYs);
       }, 100)
-      
-    },
-    mounted() {
-      
     },
     destroyed() {
       this.$bus.$off('itemImgLoad', this.itemImgListener)
@@ -155,13 +151,13 @@
         // positionY 在 8477 和 一个很大的值 之间，index = 3
         let length = this.themeTopYs.length
         for(let i = 0; i < length - 1; i++) {
-          if(this.currentIndex !== i && (positionY >= this.themeTopYs[i] 
+          if(this.currentIndex !== i && (positionY >= this.themeTopYs[i]
              && positionY < this.themeTopYs[i+1])) {
               this.currentIndex = i;
               console.log(this.currentIndex);
               this.$refs.nav.currentIndex = this.currentIndex
              }
-          // if(this.currentIndex !== i && (i < length - 1 && positionY >= this.themeTopYs[i] && positionY < 
+          // if(this.currentIndex !== i && (i < length - 1 && positionY >= this.themeTopYs[i] && positionY <
           //   this.themeTopYs[i+1]) || (i === length -1 && positionY >= this.themeTopYs[i])){
           //       this.currentIndex = i;
           //       // console.log(this.currentIndex);
@@ -183,7 +179,7 @@
         product.iid = this.iid;
         // 2.将商品添加到购物车里(vuex的补充：1、promise 2、mapActions)
         // 不要这样做，修改state属性，要使用mutations
-        // this.$store.cartList.push(product) 
+        // this.$store.cartList.push(product)
         // mutations的调用方式
         // this.$store.commit('addCart', product)
         // actions的调用方式
@@ -196,8 +192,8 @@
           //   this.show = false;
           //   this.message = '';
           // }, 1500)
-          this.$toast.show()
-          // console.log(this.$toast);
+          this.$toast.show('成功加入购物车')
+          console.log(this.$toast);
         })
         // this.$store.dispatch('addCart', product).then(res => {
         //   console.log(res);

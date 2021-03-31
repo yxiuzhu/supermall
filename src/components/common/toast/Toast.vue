@@ -45,6 +45,7 @@
     top: 50%;
     left: 50%;
     padding: 8px 10px;
+    border-radius: 10px;
     transform: translate(-50%, -50%);
     z-index: 999;
 

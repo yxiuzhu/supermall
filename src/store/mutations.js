@@ -11,9 +11,7 @@ export default {
     // 这里如果像老师一样只是将count属性加一，
     // 数组的长度其实没有改变，最后购物车里反复添加
     // 同一件商品的时候没办法正确读取实际购物车衣服的数量
-
-    state.cartList.push(payload)
-    console.log(payload.count);
+    // state.cartList.push(payload)
   },
   [ADD_TO_CART](state, payload) {
     payload.checked = true

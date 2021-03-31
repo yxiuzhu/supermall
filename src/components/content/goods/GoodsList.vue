@@ -30,7 +30,6 @@
     /* 元素就不会叠在一起 */
     flex-wrap: wrap;
     justify-content: space-around;
-
     padding: 3px;
   }
 </style>

@@ -5,16 +5,16 @@
                  @tabClick="tabClick"
                  ref="topTabControl"
                  class="tab-control" v-show="isTabFixed"/>
-    <scroll class="content" 
-            ref="scroll" 
-            :probe-type="3" 
-            @scroll="contentScroll" 
+    <scroll class="content"
+            ref="scroll"
+            :probe-type="3"
+            @scroll="contentScroll"
             :pull-up-load="true"
             @pullingUp="loadMore">
       <home-swiper :banners="banners" @swiperImageLoad="swiperImageLoad"/>
       <recommend-view :recommends="recommends"/>
       <feature-view/>
-      <tab-control :titles="['流行', '新款', '精选']" 
+      <tab-control :titles="['流行', '新款', '精选']"
                    @tabClick="tabClick"
                    ref="tabControl"/>
       <!-- 下面这里改成了计算属性 -->
@@ -99,7 +99,7 @@
       this.saveY = this.$refs.scroll.getScrollY()
       // 2.取消全局事件的监听  告诉系统需要取消哪一个函数
       this.$bus.$off('itemImageLoad', this.itemImgListener)
-      
+
     },
     created() {
       // 1.请求多个数据
@@ -135,18 +135,19 @@
        */
       tabClick(index) {
         switch(index) {
-          case 0: 
+          case 0:
             this.currentType = 'pop'
             break
-          case 1: 
+          case 1:
             this.currentType = 'new'
             break
           case 2:
             this.currentType = 'sell'
             break
         }
-        this.$refs.topTabControl.currentType = index;
-        this.$refs.tabControl.currentType = index;
+        console.log(index)
+        this.$refs.topTabControl.currentIndex = index;
+        this.$refs.tabControl.currentIndex = index;
       },
       backClick() {
         // scrollTo的三个参数分别是位置和返回这个位置的时间ms
@@ -239,17 +240,3 @@
     z-index: 9;
   }
 </style>
-
-
-// 怎么将一个数组添加到另一个数组
-// let totalNums = []
-// const nums1 = [20,12,21]
-// const nums2 = [23,351,1]
-
-// 方法一
-// for(let n of nums2) {
-//   totalNums.push(n)
-// }
-
-//方法二
-// totalNums.push(...nums1)

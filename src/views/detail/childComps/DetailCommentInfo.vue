@@ -44,7 +44,7 @@
         let date = new Date(value*1000);
         // 2.将时间戳格式化
         return formatDate(date, 'yyyy-MM-dd')
-      } 
+      }
     }
   }
 </script>
