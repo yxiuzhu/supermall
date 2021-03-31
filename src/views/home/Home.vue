@@ -50,8 +50,7 @@
       TabControl,
       GoodsList,
       Scroll,
-      BackTop,
-
+      BackTop
     },
     mixins:[itemListenerMixin],
     data() {
