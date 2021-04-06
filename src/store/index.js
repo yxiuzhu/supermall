@@ -15,7 +15,7 @@ const store = new Vuex.Store({
   state,
   mutations,
   actions,
-  getters,
+  getters
 })
 
 // 3.挂载Vue实例上
