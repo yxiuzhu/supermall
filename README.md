@@ -48,7 +48,7 @@ npm run serve
 - `GoodsList` 商品列表通过`event bus`实现按需动态加载
 - 利用`mixin`混入添加防抖函数`debounce`
 
-## 🏬Cart购物车详情页
+## 💸Cart购物车详情页
 
 - `NavBar`利用**具名插槽**实现三栏布局
 - `Vuex`对购物车进行状态管理
@@ -93,14 +93,23 @@ npm run serve
 
 ## 项目目录结构
 >supermall 
-    ├─assets -- css资源及项目图片 
+
+    ├─assets -- css资源及项目图片
+    
     ├─common -- 工具类及通用的mixin代码
+    
     ├─components -- 项目组件
+    
     │  ├─common -- 项目通用组件
-    │  └─content -- 项目业务组件             
+    
+    │  └─content -- 项目业务组件     
+    
     ├─network -- axios服务端通讯
+    
     ├─router -- Vue Router
+    
     ├─store -- Vuex 
+    
     └─views -- 项目业务视图组件
 
 ## 项目总结
@@ -109,6 +118,7 @@ npm run serve
 
 * 利用`axios`封装服务端通讯的数据接口
 * 接口数据获取
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210407110931743.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhb3RpYW4xOTk3,size_16,color_FFFFFF,t_70)
 
 **`Swiper`轮播图组件**
@@ -139,6 +149,7 @@ npm run serve
 
 * 将防抖函数封装进工具类`utils.js`
 * 防止动态加载商品列表时，`refresh`方法调用次数过多
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210407150909273.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhb3RpYW4xOTk3,size_16,color_FFFFFF,t_70)
 
 **`NavBar`利用具名插槽实现三栏布局**
@@ -156,6 +167,7 @@ npm run serve
 
 * `CheckButton`新添商品默认选中
 * `CartBottomBar`监测是否全选
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210407154712318.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhb3RpYW4xOTk3,size_16,color_FFFFFF,t_70)![在这里插入图片描述](https://img-blog.csdnimg.cn/20210407154859869.png)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210407154913138.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhb3RpYW4xOTk3,size_16,color_FFFFFF,t_70)
 
@@ -176,4 +188,3 @@ npm run serve
 * 安装`Toast`插件，使用时仅需`this.$toast.show('message', 2000)`
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210407094509517.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hhb3RpYW4xOTk3,size_16,color_FFFFFF,t_70)
-
