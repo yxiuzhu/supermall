@@ -147,7 +147,6 @@
         // positionY 在 0 和 7345 之间，index = 0
         // positionY 在 =7345 和 8240 之间，index = 1
         // positionY 在 =8240 和 8477 之间，index = 2
-
         // positionY 在 8477 和 一个很大的值 之间，index = 3
         let length = this.themeTopYs.length
         for(let i = 0; i < length - 1; i++) {
@@ -157,12 +156,6 @@
               console.log(this.currentIndex);
               this.$refs.nav.currentIndex = this.currentIndex
              }
-          // if(this.currentIndex !== i && (i < length - 1 && positionY >= this.themeTopYs[i] && positionY <
-          //   this.themeTopYs[i+1]) || (i === length -1 && positionY >= this.themeTopYs[i])){
-          //       this.currentIndex = i;
-          //       // console.log(this.currentIndex);
-          //       this.$refs.nav.currentIndex = this.currentIndex
-          //   }
         // 3.是否回到顶部
         // 1.判断BackTop是否显示
         this.listenShowBackTop(position)

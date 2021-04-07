@@ -10,7 +10,7 @@ export function debounce(func, delay=50) {
 }
 
 // 用来格式化时间戳
-// 正则表达式干嘛的？  字符串匹配利器
+// 正则表达式：字符串匹配利器
 export function formatDate(date, fmt) {
   // 1.获取年份
   if (/(y+)/.test(fmt)) {

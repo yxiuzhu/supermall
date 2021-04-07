@@ -33,6 +33,7 @@
         click: true,
         // 实时确定probeType的值
         probeType: this.probeType,
+        // 是否滚动到底部
         pullUpLoad: this.pullUpLoad
       })
 
@@ -51,7 +52,6 @@
           this.$emit('pullingUp')
         })
       }
-
     },
     methods: {
       scrollTo(x, y, time=300) {

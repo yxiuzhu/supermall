@@ -41,7 +41,7 @@
     filters: {
       showDate: function (value) {
         //  1.将时间戳转换成Date对象
-        let date = new Date(value*1000);
+        let date = new Date(value * 1000);
         // 2.将时间戳格式化
         return formatDate(date, 'yyyy-MM-dd')
       }

@@ -1,8 +1,8 @@
 <template>
   <div class="bottom-bar">
     <div class="check-content">
-      <check-button 
-              :is-checked="isSelectAll" 
+      <check-button
+              :is-checked="isSelectAll"
               class="check-button"
               @click.native="checkClick"/>
       <span>全选</span>
@@ -22,7 +22,7 @@
   import CheckButton from '@/components/content/checkButton/CheckButton'
 
   import { mapGetters } from 'vuex'
-  
+
   export default {
     name: 'CartBottomBar',
     components: {
@@ -41,21 +41,8 @@
         return this.cartList.filter(item => item.checked).length
       },
       isSelectAll() {
-        // 法1：filter
-        // if(this.cartList.length === 0) return false
-        // return !(this.cartList.filter(item => !item.checked).length)
-        // 法2：find
         if(this.cartList.length === 0) return false
         return !this.cartList.find(item => !item.checked)
-        // 法3：遍历
-        // if(this.cartList.length === 0) return false
-        // for(let item of this.cartList) {
-        //   if(!item.checked) {
-        //     return false
-        //   }
-        // }
-        // return true
-
       }
     },
     methods: {

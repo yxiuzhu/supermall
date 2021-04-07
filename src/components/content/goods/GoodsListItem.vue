@@ -30,7 +30,7 @@
     methods: {
       imageLoad() {
         // console.log("itemList加载完成");
-        // 利用事件总线发送事件，让Good检测到
+        // 利用事件总线发送事件，让Home组件检测到
         this.$bus.$emit("itemImageLoad")
 
         // 可以使用路由来区分是哪个组件需要发送消息
@@ -50,25 +50,24 @@
 
 <style scoped>
   .goods-item {
-  padding-bottom: 40px;
-  position: relative;
-
-  width: 48%;
+    padding-bottom: 40px;
+    position: relative;
+    width: 48%;
   }
 
   .goods-item img {
     width: 100%;
-    border-radius: 5px;
+    border-radius: 7px;
   }
 
   .goods-info {
-    font-size: 12px;
     position: absolute;
     bottom: 5px;
     left: 0;
     right: 0;
     overflow: hidden;
     text-align: center;
+    font-size: 12px;
   }
 
   .goods-info p {

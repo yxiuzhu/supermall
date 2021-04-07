@@ -8,11 +8,11 @@ export default {
     return new Promise((resolve, reject) => {
       // payload是新添加的商品
       // 1.查找之前数组中是否有该商品
-      let oldProduct = context.state.cartList.find(item => item.iid === payload.iid)
+      let oldProduct = context.state.cartList.find(
+        item => item.iid === payload.iid
+      )
       // 2.判断oldProduct是否存在
       if (oldProduct) {   //数量+1
-        // oldProduct.count += 1
-        // console.log('加');
         context.commit(ADD_COUNTER, oldProduct)
         resolve('当前商品数量+1')
       } else {   //添加新商品

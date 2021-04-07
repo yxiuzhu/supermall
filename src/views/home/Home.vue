@@ -38,7 +38,7 @@
 
   import { getHomeMultidata, getHomeGoods } from "network/home";
   // import {debounce} from "common/utils"
-  import {itemListenerMixin} from 'common/mixin'
+  import { itemListenerMixin } from 'common/mixin'
 
   export default {
     name: "Home",
@@ -54,7 +54,6 @@
     },
     mixins:[itemListenerMixin],
     data() {
-        FeatureView
       return {
         banners: [],
         recommends: [],
@@ -98,15 +97,14 @@
       this.saveY = this.$refs.scroll.getScrollY()
       // 2.取消全局事件的监听  告诉系统需要取消哪一个函数
       this.$bus.$off('itemImageLoad', this.itemImgListener)
-
     },
     created() {
       // 1.请求多个数据
-      this.getHomeMultidata()
+      this._getHomeMultidata()
       // 2.请求商品数据
-      this.getHomeGoods('pop')
-      this.getHomeGoods('new')
-      this.getHomeGoods('sell')
+      this._getHomeGoods('pop')
+      this._getHomeGoods('new')
+      this._getHomeGoods('sell')
 
     },
     mounted() {
@@ -161,8 +159,8 @@
         this.isTabFixed = (-position.y) > this.tabOffsetTop
       },
       loadMore() {
-        console.log('监听到了加载等多的信息');
-        this.getHomeGoods(this.currentType)
+        console.log('监听到了加载更多的信息');
+        this._getHomeGoods(this.currentType)
       },
       swiperImageLoad () {
         // console.log(this.$refs.tabControl2.$el.offsetTop);
@@ -171,7 +169,7 @@
       /**
        * 网络请求的相关方法
        */
-      getHomeMultidata() {
+      _getHomeMultidata() {
         getHomeMultidata().then(res => {
           // console.log(res);
           // this.result = res;
@@ -179,7 +177,7 @@
           this.recommends = res.data.recommend.list;
         })
       },
-      getHomeGoods(type) {
+      _getHomeGoods(type) {
         const page = this.goods[type].page + 1
         getHomeGoods(type, page).then(res => {
           // res => pop前30 page:1  下面的this指的是当前的组件对象
