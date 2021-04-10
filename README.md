@@ -95,13 +95,21 @@ npm run serve
 
 supermall 
 > assets -- css资源及项目图片
+> 
 > common -- 工具类及通用的mixin代码
+> 
 > components -- 项目组件
+> 
 >  > common -- 项目通用组件
->  > content -- 项目业务组件     
+>  > 
+>  > content -- 项目业务组件 
+>  >     
 > network -- axios服务端通讯
+> 
 > router -- Vue Router
+> 
 > store -- Vuex 
+> 
 >  > views -- 项目业务视图组件
 
 ## 项目总结
