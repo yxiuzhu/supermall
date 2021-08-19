@@ -36,6 +36,7 @@ npm run serve
 
 * [项目演示地址](http://1.14.153.166:8080/#/home)（请用chrome手机模式浏览）
 * 或扫描如下二维码浏览
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/da8d741d9af4407581250578a93af43e.png)
 
 ## 项目页面及功能
